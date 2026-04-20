@@ -26,11 +26,7 @@ if __name__ == '__main__':
     data = Data(args)
 
 
-    # ind_noise_list = (0.1,0.15,0.2,0.25,0.3,0.35)
-    # ood_noise_list = (0.1,0.15,0.2,0.25,0.3,0.35)
 
-    # for args.ind_noise_ratio in ind_noise_list:
-    #     for args.ood_noise_ratio in ood_noise_list:
 
     if args.purity_select_ball>0:
             print('Training begin...')
@@ -64,45 +60,3 @@ if __name__ == '__main__':
 
 
     manager.save_results(args)
-    #
-    #         min_ball_list = (9,10,12,14,16,17)
-    #         purity_list = (0.4,0.5,0.6, 0.7, 0.8)
-    # #
-    # #
-    # #
-    #         for min_ball in min_ball_list:
-    #             for purity in purity_list:
-    #                 print(f"\n=== Start evaluation with purity={purity}, min_ball={min_ball} ===")
-    #
-    #                 args.purity_select_ball = purity
-    #                 args.min_ball_select_ball = min_ball
-    #
-    #                 # 开始计时
-    #                 start_time = time.time()
-    #
-    #                 print('Calculate ball begin...')
-    #                 gb_centroids, gb_radii, gb_labels = manager_p1.calculate_granular_balls(args, data)
-    #                 if len(gb_centroids) == 0:
-    #                     continue
-    #                 else:
-    #                     print('Calculate ball finished!')
-    #
-    #                     # 重新初始化 ModelManager（如果需要新的实例，否则可以复用）
-    #                     manager = ModelManager(args, data, manager_p1.model)
-    #
-    #                     print('Evaluation begin...')
-    #                     manager.evaluation(args, data, gb_centroids, gb_radii, gb_labels, mode="test")
-    #                     print('Evaluation finished!')
-    #
-    #                     end_time = time.time()
-    #                     elapsed_time = end_time - start_time
-    #                     print(f"Elapsed time for purity={purity}, min_ball={min_ball}: {elapsed_time:.2f} seconds")
-    #
-    #                     # 显式释放无用变量，防止显存累积
-    #                     del gb_centroids, gb_radii, gb_labels
-    #                     import gc
-    #
-    #                     gc.collect()
-    #                     import torch
-    #
-    #                     torch.cuda.empty_cache()
